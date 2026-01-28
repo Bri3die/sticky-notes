@@ -1,0 +1,17 @@
+<!-- notes/templates/notes/note_delete_confirmation.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+    Delete Note - Sticky Notes
+{% endblock %}
+
+{% block content %}
+    <h2>Delete Note</h2>
+    <p>Are you sure you want to delete "{{ note.title }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete it</button>
+        <a href="{% url 'note_list' %}">Cancel</a>
+    </form>
+{% endblock %}

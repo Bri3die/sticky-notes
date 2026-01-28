@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}All Notes{% endblock %}
+
+{% block content %}
+<h2>My Notes</h2>
+
+<a href="{% url 'note_create' %}">Add New Note</a>
+
+{% if notes %}
+    {% for note in notes %}
+        <div class="note">
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.content }}</p>
+            <p>Created: {{ note.created_at }}</p>
+            <a href="{% url 'note_detail' pk=note.pk %}">View</a>
+            <a href="{% url 'note_update' pk=note.pk %}">Edit</a>
+            <a href="{% url 'note_delete' pk=note.pk %}">Delete</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No notes yet.</p>
+{% endif %}
+{% endblock %}
